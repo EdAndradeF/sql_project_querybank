@@ -43,6 +43,7 @@ select
 	,a1.disp_id as OWNER_disp
 	,a2.client_id as DISPONENT_id
 	,a2.disp_id as DISPONENT_disp
+	,a1.district_id as district_id
 	,case
 		when a1.sex = 'M'
 			then concat(a1.sex,'/', a2.sex)
@@ -61,21 +62,17 @@ select
 	,l.status
 	,l.amount 
 	,l.payments
+	
 	from loan as l
 		join casais as c
 			on l.account_id = c.account_id
 )
 
-select
-	client_count
-	,count(amount)
-	,l.status
-	from account_num as  an
-	join loan as l 
-		on l.account_id = an.account_id
-group by client_count, status
-order by count
-
+select 
+	*
+		from conj_loan
+	
+	
 
 
 
